@@ -1,0 +1,116 @@
+.bmi-wrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #D9CBAE; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease-in-out;
+}
+
+.bmi-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+}
+
+.image-item {
+    text-align: center;
+}
+
+.profile-img {
+    width: 80px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid #C45A3D;
+}
+
+.display-result {
+    font-size: 2rem;
+    color: #4E3B31; 
+    text-align: center;
+}
+
+.bmi-chart table {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.bmi-chart th, .bmi-chart td {
+    border: 1px solid #ddd; 
+    padding: 8px; 
+}
+
+.alert-custom {
+    background-color: #A8BBA1; 
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    text-align: center;
+    color: #4E3B31; 
+}
+
+.go-to-top {
+    background-color: #C45A3D; 
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.go-to-top:hover {
+    background-color: #4E3B31; 
+}
+
+.benefits-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.benefit-item {
+    background-color: #D9CBAE; 
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: #4E3B31; 
+}
+
+/* progress bar*/
+#bmiProgress {
+    width: 100%;
+    height: 25px;
+    border-radius: 15px;
+    margin-top: 20px;
+    transition: background-color 0.5s ease, width 0.5s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Underweight */
+#bmiProgress.underweight {
+    background-color: #00bfff; 
+}
+
+/* Normal weight */
+#bmiProgress.normal {
+    background-color: #28a745; 
+}
+
+/* Overweight */
+#bmiProgress.overweight {
+    background-color: #ffc107;
+}
+
+/* Obese */
+#bmiProgress.obese {
+    background-color: #dc3545;
+}
+
