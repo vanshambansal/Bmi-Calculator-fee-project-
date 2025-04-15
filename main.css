@@ -71,18 +71,18 @@ body {
 }
 
 .benefits-box {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     margin: 10px 0;
 }
 
 .benefit-item {
-    background-color: #D9CBAE; 
+    background-color: #c4f2fb; 
     padding: 10px;
     text-align: center;
     border-radius: 5px;
-    color: #4E3B31; 
+    color: #087990; 
 }
 
 /* General Styling for the BMI Result Section */

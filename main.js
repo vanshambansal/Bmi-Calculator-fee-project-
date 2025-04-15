@@ -75,16 +75,21 @@ function calculateBMI() {
         document.getElementById("bmi-meaning").innerText = "You are obese.";
     }
 
-    gsap.to(progressBar, {
-        duration: 1,
-        value: progressValue,
-        ease: "power2.out",
-    });
-
-    progressBar.className = `progress-bar ${progressClass}`;
+    // Delay progress animation by 1 second
+    setTimeout(() => {
+        gsap.to(progressBar, {
+            duration: 1,
+            value: progressValue,
+            ease: "power2.out",
+        });
+        progressBar.className = `progress-bar ${progressClass}`;
+    }, 500); // 1000ms = 1 second
 
     // Show the result section
     document.getElementById("result-section").style.display = "block";
+
+    document.getElementById("result-section").scrollIntoView({ behavior: "smooth" });
+
 }
 
 function displayBMIMeaning(bmi) {
