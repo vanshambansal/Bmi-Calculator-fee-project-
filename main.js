@@ -77,8 +77,6 @@ function calculateBMI() {
     document.getElementById("display-result").innerText = bmi.toFixed(1);
     displayBMIMeaning(bmi);
     document.getElementById("result-section").style.display = "block";
-    document.getElementById("routine-section").style.display = "block";
-    document.getElementById("bmimeans-section").style.display = "block";
 }
 
 function displayBMIMeaning(bmi) {
@@ -116,6 +114,8 @@ function displayBMIMeaning(bmi) {
         routine = "Opt for low-impact activities like water exercises or chair workouts to avoid strain on joints. Focus on gradually increasing activity levels. Begin with 10-20 minutes of exercise daily, progressing as your stamina builds.";
     }
 
+    document.getElementById("bmi-meaning-card").style.display = "block";
+    document.getElementById("routine-card").style.display = "block";
     document.getElementById("bmi-meaning").innerText = meaning;
     document.getElementById("routine-description").innerText = routine;
     document.getElementById("bmi-means").innerText = bmimeans;
