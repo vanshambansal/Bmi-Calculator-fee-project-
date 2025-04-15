@@ -14,6 +14,14 @@ document.querySelector("button.btn-primary").addEventListener("mouseenter", (e) 
     });
 });
 
+document.querySelector("button.btn-primary").addEventListener("mouseleave", (e) => {
+    gsap.to(e.target, {
+        duration: 0.3,
+        scale: 1,
+        boxShadow: "none", // Reset the box-shadow too
+    });
+});
+
 gsap.registerPlugin(ScrollToPlugin);
 
 
