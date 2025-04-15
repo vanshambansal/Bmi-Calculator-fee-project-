@@ -156,6 +156,3 @@ gsap.from("#result-section", {
     y: 50, 
     ease: "power4.out",
 });
-
-
-
