@@ -57,19 +57,20 @@
                 </form>
             </div>
             <!-- BMI Result Section -->
-            <div id="result-section" class="bmi-result text-center my-5" style="display:none;">
-                <h3>Your BMI Result</h3>
-                <div id="display-result" class="display-result mb-4"></div>
-                <h4>
-                    <p id="bmi-meaning" class="fw-bold"></p>
-                </h4>
-                <div class="bmi-result-container">
-                    <p class="display-result">Your BMI is: <span id="bmiValue"></span></p>
-                    <progress id="bmiProgress" value="0" max="100"></progress>
+            <div id="result-section" class="card bmi-result text-center my-5" style="display:none;">
+                <div class="card-body">
+                    <h3 class="card-title">Your BMI Result</h3>
+                    <div id="display-result" class="display-result mb-4"></div>
+                    <h4>
+                        <p id="bmi-meaning" class="fw-bold"></p>
+                    </h4>
+                    <div class="bmi-result-container">
+                        <p class="display-result">Your BMI is: <span id="bmiValue"></span></p>
+                        <progress id="bmiProgress" value="0" max="100"></progress>
+                    </div>
                 </div>
-                
             </div>
-            <br>
+
             <!-- what you bmi means -->
             <div class="card p-4 mb-4" id = "bmi-meaning-card" style="display:none;">
                 <div id="bmimeans-section" class="mt-2">
