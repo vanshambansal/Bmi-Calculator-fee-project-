@@ -49,6 +49,7 @@ document.getElementById("bmi-form").addEventListener("submit", function (e) {
     calculateBMI(); // Now safely call the original function
 });
 
+// Function to calculate BMI
 function calculateBMI() {
     const weight = parseFloat(document.getElementById("weight").value);
     const height = parseFloat(document.getElementById("height").value);
@@ -103,10 +104,31 @@ function calculateBMI() {
 
     // Show the result section
     document.getElementById("result-section").style.display = "block";
-
     document.getElementById("result-section").scrollIntoView({ behavior: "smooth" });
 
+    // Show the quiz entry button
+    const bmiCategory = getBMICategory(bmi);
+    document.getElementById("quiz-entry").onclick = function () {
+        // Open the quiz page in a new tab or window
+        window.open(`quiz.html?category=${bmiCategory}`, '_blank');
+    };
+    document.getElementById("quiz-entry").style.display = "block";
+
 }
+
+// Function to get BMI category
+function getBMICategory(bmi) {
+    if (bmi < 18.5) {
+        return "underweight";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        return "normal";
+    } else if (bmi >= 25 && bmi < 29.9) {
+        return "overweight";
+    } else {
+        return "obese";
+    }
+}
+
 
 function displayBMIMeaning(bmi) {
     let meaning = "";
