@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const bmiCategory = urlParams.get("category") || "Healthy weight";
 
+    // ✅ Your full list of questions here...
     const questions = [
         // ✅ Shared questions for Severely Underweight & Underweight
         {
@@ -268,11 +269,23 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
     ];
-    
+
+    // 🔀 Shuffle helper function
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
 
     const categoryQuestions = questions.filter(q => q.bmiRange === bmiCategory);
     const generalQuestions = questions.filter(q => q.bmiRange === "all").slice(0, 2);
+
+    shuffle(categoryQuestions);
+    shuffle(generalQuestions);
+
     const filteredQuestions = [...categoryQuestions.slice(0, 5), ...generalQuestions];
+    shuffle(filteredQuestions);
 
     let currentQuestionIndex = 0;
     let score = 0;
@@ -287,15 +300,18 @@ document.addEventListener("DOMContentLoaded", () => {
         optionsElement.innerHTML = "";
         nextBtn.disabled = true;
 
-        q.options.forEach((opt, i) => {
+        const shuffledOptions = q.options.map((opt, i) => ({ opt, index: i }));
+        shuffle(shuffledOptions);
+
+        shuffledOptions.forEach(({ opt, index }) => {
             const btn = document.createElement("button");
             btn.innerText = opt;
             btn.classList.add("option");
             btn.addEventListener("click", () => {
-                checkAnswer(i, q.correct);
+                checkAnswer(index, q.correct);
                 disableOptions();
                 nextBtn.disabled = false;
-                highlightAnswers(i, q.correct);
+                highlightAnswers(index, q.correct);
             });
             optionsElement.appendChild(btn);
         });
@@ -313,25 +329,29 @@ document.addEventListener("DOMContentLoaded", () => {
     function highlightAnswers(selected, correct) {
         const buttons = document.querySelectorAll(".option");
         buttons.forEach((btn, i) => {
-            if (i === correct) {
-                btn.style.backgroundColor = "green";  // Correct answer
-            } else if (i === selected) {
-                btn.style.backgroundColor = "red";   // Incorrect answer
+            const originalIndex = filteredQuestions[currentQuestionIndex].options.indexOf(btn.innerText);
+            if (originalIndex === correct) {
+                btn.style.backgroundColor = "green";
+            } else if (originalIndex === selected) {
+                btn.style.backgroundColor = "red";
             }
         });
     }
-    
+
     function displayResults() {
         const quizBox = document.getElementById("quiz-box");
         const quizResult = document.getElementById("quiz-result");
         const scoreElement = document.getElementById("score");
         const resultMessage = document.getElementById("result-message");
+        const restartBtn = document.getElementById("restart-btn");
 
         quizBox.style.display = "none";
         quizResult.style.display = "block";
 
         scoreElement.innerText = `${score}/${filteredQuestions.length}`;
         resultMessage.innerText = score >= 5 ? "🔥 Excellent! You're health smart!" : score >= 3 ? "👍 Not bad! Keep learning." : "💡 Keep going! You can improve.";
+
+        restartBtn.style.display = "inline-block";
     }
 
     document.getElementById("next-btn").addEventListener("click", () => {
@@ -345,6 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".btn-main").addEventListener("click", () => {
         window.close();
+    });
+
+    // 🔁 Restart button logic
+    document.getElementById("restart-btn").addEventListener("click", () => {
+        window.location.reload();
     });
 
     displayQuestion(currentQuestionIndex);
