@@ -12,7 +12,6 @@ body {
     color: #333;
 }
 
-
 /* Main Quiz Section */
 .quiz-container {
     background-color: white;
@@ -26,8 +25,17 @@ body {
     text-align: center;
 }
 
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
 .question {
-    font-size: 1.3rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.3rem);
     margin-bottom: 1.5rem;
 }
 
@@ -40,7 +48,7 @@ body {
     border-radius: 8px;
     background-color: #007bff;
     color: white;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -52,7 +60,7 @@ body {
 .btn-next {
     margin-top: 1rem;
     padding: 0.75rem 1.5rem;
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
     border: none;
     border-radius: 8px;
     background-color: #28a745;
@@ -67,30 +75,50 @@ body {
 
 .quiz-result {
     margin-top: 2rem;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 .quiz-result p {
     margin-top: 1rem;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
-.btn-main {
-    display: inline-block;
-    margin-top: 1rem;
+.btn-main,
+#restart-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0.2rem auto;
     background-color: #007bff;
     padding: 0.6rem 1.2rem;
     color: white;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    text-align: center;
 }
 
-.btn-main:hover {
+.btn-main:hover,
+#restart-btn:hover {
     background-color: #0056b3;
 }
 
 /* Hidden Class */
 .hidden {
     display: none;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 500px) {
+    .quiz-container {
+        padding: 1rem;
+    }
+
+    .options button {
+        padding: 0.6rem;
+    }
+
+    .btn-next {
+        padding: 0.6rem 1rem;
+    }
 }
